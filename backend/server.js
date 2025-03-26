@@ -1,6 +1,6 @@
 const express = require("express");
 const cors = require("cors");
-const { getAuthURL, getAccessToken, refreshAccessToken } = require("./googleAuth");
+const { getAuthURL, getAccessToken } = require("./googleAuth");
 const { uploadLetterToDrive } = require("./googleDrive");
 const { convertHtmlToPdf } = require("./convert");
 
@@ -39,15 +39,7 @@ app.get("/auth/google/callback", async (req, res) => {
   }
 });
 
-// //  Refresh Access Token
-app.get("/auth/refresh", async (req, res) => {
-  try {
-    const newAccessToken = await refreshAccessToken();
-    res.status(200).json({ accessToken: newAccessToken });
-  } catch (error) {
-    res.status(500).json({ error: "Failed to refresh token" });
-  }
-});
+
 
 // Upload HTML Content & Save as PDF in Google Drive
 app.post("/drive/upload", async (req, res) => {
