@@ -15,7 +15,6 @@ const Login = () => {
     try {
       const result = await signInWithPopup(auth, googleProvider);
       const firebaseIdToken = await result.user.getIdToken(); // Get the ID token
-      console.log(firebaseIdToken)
 
       if (firebaseIdToken) {
         localStorage.setItem("token", firebaseIdToken);

@@ -30,8 +30,7 @@ app.get("/auth/google/callback", async (req, res) => {
 
   try {
     const tokens = await getAccessToken(code);
-    console.log("Access Token:", tokens.access_token);
-    console.log("Refresh Token:", tokens.refresh_token || "Already stored");
+
 
     res.redirect(`${FRONTEND_URL}/home?token=${tokens.access_token}`);
   } catch (error) {

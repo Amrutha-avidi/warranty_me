@@ -25,7 +25,6 @@ async function getOrCreateLettersFolder() {
     });
 
     if (response.data.files.length > 0) {
-      console.log("'Letters' folder found:", response.data.files[0].id);
       return response.data.files[0].id;
     }
 
@@ -73,7 +72,7 @@ async function uploadLetterToDrive(pdfBuffer) {
       fields: "id, webViewLink",
     });
 
-    console.log("✅ File uploaded successfully:", response.data);
+    console.log(" File uploaded successfully:", response.data);
     return response.data; 
   } catch (error) {
     console.error(" Google Drive Upload Failed:", error);
