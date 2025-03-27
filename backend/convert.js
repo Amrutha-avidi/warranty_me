@@ -1,3 +1,5 @@
+require("dotenv").config();
+
 const puppeteer = require("puppeteer");
 
 const convertHtmlToPdf = async (htmlContent) => {
@@ -5,6 +7,8 @@ const convertHtmlToPdf = async (htmlContent) => {
 
     // Launch Puppeteer
     const browser = await puppeteer.launch({
+        executablePath: process.env.PUPPETEER_EXECUTABLE_PATH || (await puppeteer.executablePath()),
+
         headless: "new",
         args: ["--no-sandbox", "--disable-setuid-sandbox"],
     });
