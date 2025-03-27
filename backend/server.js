@@ -11,10 +11,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-const FRONTEND_URL =
-  process.env.NODE_ENV === "production"
-    ? DEPLOYED_FRONTEND_URL
-    : "http://localhost:5173";
+const FRONTEND_URL = process.env.DEPLOYED_FRONTEND_URL || "http://localhost:5173";
 
 
 

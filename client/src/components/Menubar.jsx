@@ -8,7 +8,6 @@ import {
   FaAlignCenter,
   FaAlignRight,
   FaAlignJustify,
-  FaHeading,
   FaUnderline,
 } from "react-icons/fa";
 
