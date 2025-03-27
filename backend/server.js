@@ -29,7 +29,6 @@ app.get("/auth/google/callback", async (req, res) => {
 
   try {
     const tokens = await getAccessToken(code);
-
     res.redirect(`${FRONTEND_URL}/home?token=${tokens.access_token}`);
   } catch (error) {
     console.error("Authentication failed:", error);
