@@ -21,18 +21,20 @@ const FRONTEND_URL =
 
 // //  Redirect to Google Login Page
 app.get("/auth/google", (req, res) => {
+  console.log("asdasdas")
   const url = getAuthURL();
   res.redirect(url);
 });
 
 // //  Handle Google OAuth Callback
 app.get("/auth/google/callback", async (req, res) => {
+  console.log(req)
   const code = req.query.code;
   if (!code) return res.status(400).send("No code provided");
 
   try {
     const tokens = await getAccessToken(code);
-
+    console.log(tokens.access_token)
 
     res.redirect(`${FRONTEND_URL}/home?token=${tokens.access_token}`);
   } catch (error) {
