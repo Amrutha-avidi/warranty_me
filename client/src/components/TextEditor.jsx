@@ -46,13 +46,14 @@ const TextEditor = ({ onDraftSaved, selectedDraft, onLoadDraft }) => {
   // Stub functions – replace these with your actual logic
   const handleSaveToDrive = async () => {
     console.log("Saving to Drive...");
-
+    console.log(content)
     try {
       const response = await fetch("https://warranty-me.onrender.com/drive/upload", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ content }),
       });
+      console.log(response)
       if (!response.ok) {
         throw new Error(`Server Error: ${response.status}`);
       }

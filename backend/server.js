@@ -9,6 +9,7 @@ const { convertHtmlToPdf } = require("./convert");
 
 const app = express();
 app.use(express.json());
+
 const corsOptions = {
   origin: 'http://localhost:5173',
   methods: ['POST'], // Allow only POST requests for this endpoint
@@ -48,6 +49,7 @@ app.get("/auth/google/callback", async (req, res) => {
 app.post("/drive/upload", async (req, res) => {
   try {
     const { content } = req.body;
+    console.log(content)
 
     if (!content) {
       return res.status(400).json({ error: "No content provided" });

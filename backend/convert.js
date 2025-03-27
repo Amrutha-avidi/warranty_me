@@ -4,7 +4,10 @@ const convertHtmlToPdf = async (htmlContent) => {
     console.log("Converting HTML to PDF...");
 
     // Launch Puppeteer
-    const browser = await puppeteer.launch({ headless: "new" });
+    const browser = await puppeteer.launch({
+        headless: "new",
+        args: ["--no-sandbox", "--disable-setuid-sandbox"],
+    });
     const page = await browser.newPage();
     await page.setContent(htmlContent, { waitUntil: "networkidle0" });
 
@@ -18,7 +21,7 @@ const convertHtmlToPdf = async (htmlContent) => {
     await browser.close();
     console.log(" PDF successfully generated!");
 
-    return pdfBuffer; 
+    return pdfBuffer;
 };
 
 module.exports = { convertHtmlToPdf };
