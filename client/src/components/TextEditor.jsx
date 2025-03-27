@@ -48,7 +48,7 @@ const TextEditor = ({ onDraftSaved, selectedDraft, onLoadDraft }) => {
     console.log("Saving to Drive...");
 
     try {
-      const response = await fetch("http://localhost:5000/drive/upload", {
+      const response = await fetch("https://warranty-me.onrender.com/drive/upload", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ content }),

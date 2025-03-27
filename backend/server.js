@@ -11,7 +11,7 @@ app.use(express.json());
 
 const FRONTEND_URL =
   process.env.NODE_ENV === "production"
-    ? "https://your-deployed-frontend.com"
+    ? "https://warranty-me-zeta.vercel.app"
     : "http://localhost:5173";
 
 
