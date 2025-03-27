@@ -46,26 +46,29 @@ const TextEditor = ({ onDraftSaved, selectedDraft, onLoadDraft }) => {
   // Stub functions – replace these with your actual logic
   const handleSaveToDrive = async () => {
     console.log("Saving to Drive...");
-    console.log(content)
+    console.log(content);
+
     try {
-      const response = await fetch("https://warranty-me.onrender.com/drive/upload", {
+      const response = await fetch("http://localhost:5000/drive/upload", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ content }),
       });
-      console.log(response)
+
       if (!response.ok) {
-        throw new Error(`Server Error: ${response.status}`);
+        const errorText = await response.text(); // Read once
+        throw new Error(`Server Error: ${response.status} - ${errorText}`);
       }
 
-      const result = await response.json();
-      console.log(" Drive Response:", result);
-      alert("Successfully uploaded to Google Drive!"); // User feedback
+      const result = await response.json(); // Read JSON only once
+      console.log("Drive Response:", result);
+      alert("Successfully uploaded to Google Drive!");
     } catch (error) {
-      console.error(" Upload failed:", error);
+      console.error("Upload failed:", error);
       alert("Failed to upload to Drive. Please try again.");
     }
   };
+
 
 
   const handleSaveToDrafts = () => {

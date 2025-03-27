@@ -18,7 +18,7 @@ const Login = () => {
 
       if (firebaseIdToken) {
         localStorage.setItem("token", firebaseIdToken);
-        window.location.href = "https://warranty-me.onrender.com/auth/google";
+        window.location.href = "http://localhost:5000/auth/google";
         navigate("/home");
 
       }
