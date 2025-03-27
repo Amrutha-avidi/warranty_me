@@ -1,0 +1,9 @@
+{
+    "rewrites": [
+      {
+        "source": "/home/:path*",
+        "destination": "/index.html"
+      }
+    ]
+  }
+  
