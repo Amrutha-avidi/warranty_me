@@ -26,11 +26,6 @@ const getAuthURL = () => {
 const getAccessToken = async (code) => {
   const { tokens } = await oauth2Client.getToken(code);
   oauth2Client.setCredentials(tokens);
-
-  if (tokens.refresh_token) {
-    saveTokens(tokens); // Save refresh token if provided
-  }
-
   return tokens;
 };
 

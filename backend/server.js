@@ -8,8 +8,13 @@ const { convertHtmlToPdf } = require("./convert");
 
 
 const app = express();
-app.use(cors());
 app.use(express.json());
+const corsOptions = {
+  origin: 'http://localhost:5173',
+  methods: ['POST'], // Allow only POST requests for this endpoint
+};
+
+app.use(cors(corsOptions));
 
 const FRONTEND_URL = process.env.DEPLOYED_FRONTEND_URL || "http://localhost:5173";
 
